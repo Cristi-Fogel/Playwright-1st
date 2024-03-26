@@ -83,7 +83,7 @@ test("UI Controls test", async ({page})=>
     await signInButton.click();
 });
 
-test.only('Child windows handling', async ({browser})=>
+test('Child windows handling', async ({browser})=>
 {    
     //we define context and start from browser level, not page
     const context = await browser.newContext(); 
@@ -91,11 +91,25 @@ test.only('Child windows handling', async ({browser})=>
     const documentLink = page.locator("[href*='documents-request']");
     //normal test flow
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-    //define page and start the event listener so it's ready for whwen you click to open the page
-    Promise.all(
+    
+    //2nd tab 
+    const [newPage]= await Promise.all(
+    // const [newPage, newPage2] /// if there are multiple tabs in play
     [
-        context.waitForEvent('page'),  
+        context.waitForEvent('page'),  //define page and start the event listener so it's ready for whwen you click to open the page
         documentLink.click(),  //page open in another tab, so we check it there   
     ]);
     
+    const redText = await newPage.locator(".red").textContent();
+    console.log(redText);
+
+    const arrayText = redText.split("@"); //split on at
+    const domainText = arrayText[1].split(" ")[0] //split on whitespace
+    console.log(domainText);
+
+    //go back to main page
+    await page.locator("#username").fill(domainText);
+   
+    await page.pause();
+    console.log(await page.locator("#username").textContent()); //prints content in element to logs
 });
