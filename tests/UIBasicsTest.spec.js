@@ -79,7 +79,7 @@ test("UI Controls test", async ({page})=>
     // check blinking item on page
     await expect(documentLink).toHaveAttribute("class", "blinkingText"); // if class element is found, then blinking will eventually work
 
-    await page.pause();
+    //await page.pause();
     await signInButton.click();
 });
 
@@ -110,6 +110,6 @@ test('Child windows handling', async ({browser})=>
     //go back to main page
     await page.locator("#username").fill(domainText);
    
-    await page.pause();
+   // await page.pause();
     console.log(await page.locator("#username").textContent()); //prints content in element to logs
 });

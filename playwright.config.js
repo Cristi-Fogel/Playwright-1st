@@ -18,11 +18,14 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: false, 
+    screenshot: 'off',
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    // // on - detail report for each step
+    // // on-first-retry - default
+    trace: 'off',
   },
 
   /* Configure projects for major browsers */
