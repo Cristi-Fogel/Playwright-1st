@@ -29,7 +29,6 @@ test('Browser check', async ({page})=>
     await page.locator("div li").first().waitFor(); //wait until they show up (1st item in list is populated with data)
     
     const bool = await page.locator("h3:has-text('Zara Coat 3')").isVisible(); //check that it exists -- returns boolean value
-
-    expect(bool).toBeTruthy();  
+    expect(bool).toBeTruthy();  //TODO: check evauluation if not fixed at end of course
 })
  
