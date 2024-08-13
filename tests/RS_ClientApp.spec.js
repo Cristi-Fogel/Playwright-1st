@@ -9,12 +9,14 @@ test('Browser check', async ({page})=>
     await page.locator("#userEmail").fill("cf@mailinator.com");
     await page.locator("#userPassword").fill("Password1");
     await page.locator("[value='Login']").click(); 
+    await page.locator(".card-body b").first().waitFor(); // products to loadup
 
     const titles = await page.locator(".card-body b").allTextContents();
     console.log(titles); 
+    // await page.pause();
     //hunt for product 'Zara Coat 4' to click on it
     const countProducts = await products.count();
-    for (let i=0; i< countProducts; ++i)
+    for (let i=0; i < countProducts; ++i)
     {
         if(await products.nth(i).locator("b").textContent() === searchForProductName)
         {
@@ -23,13 +25,18 @@ test('Browser check', async ({page})=>
             break; //found it, no need to continue loop
         }
     }
+    // await page.pause();
     //goto cart
-    await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('networkidle') 
     await page.locator("button[routerlink='/dashboard/cart']").dispatchEvent('click');
-    await page.locator("div li").first().waitFor(); //wait until they show up (1st item in list is populated with data)
+    await page.locator("div li").first().waitFor(); //wait until 1st item of list of items show up (1st item in list is populated with data)
     
-    // //TODO: re-check at end, if passes; reenable test below
-    // const bool = await page.locator("h3:has-text('Zara Coat 3')").isVisible(); //check that it exists -- returns boolean value
-    // expect(bool).toBeTruthy();  //TODO: check evauluation if not fixed at end of course
+    const bool = await page.locator("h3:has-text('Zara Coat 3')").isVisible(); //check that it exists -- returns boolean value
+    expect(bool).toBeTruthy();  //TODO: check evauluation if not fixed at end of course
+    await page.locator("li[class='totalRow'] button[type='button']").click(); //checkout button
+    // await page.pause();
+
+    //checkout page
+    await page.locator("[placeholder*='Country']").fill("ind");
+
 })
- 
