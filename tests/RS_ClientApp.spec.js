@@ -54,4 +54,24 @@ test('Browser check', async ({page})=>
     //asertions for the page
     expect(page.locator(".user__name [type='text']").first()).toHaveText(email);
     await page.locator(".action__submit").click(); // place order button
-})
+
+    //thankyou for oder page
+    await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ");
+    const orderID = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
+    console.log("Order ID is: " + orderID); 
+    
+    //orders page 
+    await page.locator("button[routerlink='/dashboard/myorders']").dispatchEvent('click');
+    await page.locator("ng-star-inserted").first().waitFor(); 
+
+    const orderRows = await page.locator("tbody tr");
+    // for(let i = 0; i < orderRows; i++){
+    //     const rowOrderID = await orderRows.nth(i).locator("th").textContent(); //grab orderID of that row
+    //     if(orderID.includes(rowOrderID)){
+    //         await orderRows.nth(i).locator("button").first().click(); //1st button within row is the View button
+    //         break;
+    //     }
+    // }
+
+  
+}) 
