@@ -62,16 +62,18 @@ test('Browser check', async ({page})=>
     
     //orders page 
     await page.locator("button[routerlink='/dashboard/myorders']").dispatchEvent('click');
-    await page.locator("ng-star-inserted").first().waitFor(); 
-
-    const orderRows = await page.locator("tbody tr");
-    // for(let i = 0; i < orderRows; i++){
-    //     const rowOrderID = await orderRows.nth(i).locator("th").textContent(); //grab orderID of that row
-    //     if(orderID.includes(rowOrderID)){
-    //         await orderRows.nth(i).locator("button").first().click(); //1st button within row is the View button
-    //         break;
-    //     }
-    // }
-
-  
+    await page.locator("tbody").waitFor(); //waiting for whole table-body to loadup, prior to making the evaluation #async breakage
+    const rows = await page.locator("tbody tr"); //waiting for table data to be loaded up
+    
+    for(let i=0; i<await rows.count(); i++){
+        const rowOrderId = await rows.nth(i).locator("th").textContent();
+        if (orderID.includes(rowOrderId))
+        {
+            await rows.nth(i).locator("button").first().click();
+            break;
+        }
+    }
+    const orderIdDetails = await page.locator(".col-text").textContent();
+    
+    expect(orderID.includes(orderIdDetails)).toBeTruthy();
 }) 
