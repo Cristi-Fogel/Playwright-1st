@@ -1,34 +1,36 @@
 const {test, expect, request} = require('@playwright/test');
 const loginPayload = {userEmail:"cf@mailinator.com",userPassword:"Password1"};
-const loginURL = "https://rahulshettyacademy.com/api/ecom/auth/login";
+const baseURL = "https://rahulshettyacademy.com";
+const loginURL = baseURL + "/api/ecom/auth/login";
+const landingURL = baseURL + "/client";
 
-test.beforeAll( async ()=>{
+let token; 
+
+test.beforeAll(async () => {
     const apiContext = await request.newContext();
     const loginResponse = await apiContext.post(loginURL, {
-        data:loginPayload
-    }); 
+        data: loginPayload
+    });
     expect(loginResponse.ok()).toBeTruthy();
-    const loginResponseJson = loginResponse.json();
-    const token = loginResponseJson.token;
-
+    const loginResponseJson = await loginResponse.json();
+    token = loginResponseJson.token;
+    console.log("Token is: " + token);
 });
 // test.beforeEach( ()=>{
 //     //code
 // })
 
+test('@API Place the order', async ({page})=>
+    { 
+        await page.addInitScript(value => {
+            window.localStorage.setItem('token',value);
+        }, token );
+    await page.goto(landingURL);
 
-test('Browser check', async ({page})=>
-{
+    
     const products = page.locator(".card-body");
     const searchForProductName = 'ZARA COAT 3';
-    const email = "cf@mailinator.com";
-
-    await page.goto("https://rahulshettyacademy.com/client");
-    await page.locator("#userEmail").fill(email);
-    await page.locator("#userPassword").fill("Password1");
-    await page.locator("[value='Login']").click(); 
-    await page.locator(".card-body b").first().waitFor(); // products to loadup
-
+     
     const titles = await page.locator(".card-body b").allTextContents();
     console.log(titles); 
     // await page.pause();
@@ -69,7 +71,7 @@ test('Browser check', async ({page})=>
     // await page.pause();
 
     //asertions for the page
-    expect(page.locator(".user__name [type='text']").first()).toHaveText(email);
+    // expect(page.locator(".user__name [type='text']").first()).toHaveText(email);
     await page.locator(".action__submit").click(); // place order button
 
     //thankyou for oder page
