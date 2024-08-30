@@ -19,18 +19,16 @@ test.beforeAll(async () => {
 // })
 
 test('@API Place the order', async ({page})=>
-    {  
-        
+    {   
     await page.addInitScript(value => {
         window.localStorage.setItem('token',value);
-    }, response.token );
+        }, 
+        response.token );
     await page.goto("https://rahulshettyacademy.com/client");
-
     
     const products = page.locator(".card-body");
-    const searchForProductName = 'ZARA COAT 3';
+   // const searchForProductName = 'ZARA COAT 3'; //item no longer needed here, done via API
       
-    
     //orders page 
     await page.locator("button[routerlink='/dashboard/myorders']").dispatchEvent('click');
     await page.locator("tbody").waitFor(); //waiting for whole table-body to loadup, prior to making the evaluation #async breakage
