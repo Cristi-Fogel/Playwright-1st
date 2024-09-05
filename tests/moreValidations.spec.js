@@ -24,4 +24,24 @@ test("Popup validations", async({page})=>
     await framesPage.locator("li a[href*='lifetime-access']:visible").click(); //this will also scroll into view the element 
     const textCheck = await framesPage.locator(".text h2").textContent(); //string is "join 13242 happy subscribers" -- so we split and grab what we need
     console.log(textCheck.split(" ")[1]); //split on whitespace
-})
+});
+
+test("Screenshot and UI validation", async({page})=>
+{
+    await page.goto("https://rahulshettyacademy.com/AutomationPractice")
+    await expect(page.locator("#displayed-text")).toBeVisible();
+    
+    await page.locator('#displayed-text').screenshot({path: 'screenshots/partialScreenshot.png'})
+    await page.locator("#hide-textbox").click();
+    
+    await page.screenshot({path: 'screenshots/screenshot.png'})
+    await expect(page.locator("#displayed-text")).toBeHidden();
+});
+
+//screenshot -> store -> compare with screenshot from previous day
+test('visual comparission', async({page})=>
+{
+    await page.goto("https://www.google.com");
+    expect(await page.screenshot()).toMatchSnapshot('screnshots/landing.png');  //1st run will fail, BUT it creates a screenshot so you have for future runs!
+
+});

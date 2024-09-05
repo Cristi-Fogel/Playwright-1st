@@ -7,6 +7,7 @@ test('First test ever', async ({browser})=>
    const page = await context.newPage();
     
    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+   await page.pause();
 });
  
 
