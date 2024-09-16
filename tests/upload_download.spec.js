@@ -36,6 +36,22 @@ async function readExcel(worksheet, searchText) {
 
 test('Upload download excel validation', async ({page})=>
 {
-    await page.goto("https://rahulshettyacademy.com/upload-download-test/index.html")
+    const textSearch = 'Mango';
+    const updateValue = '350';
+    await page.goto("https://rahulshettyacademy.com/upload-download-test/index.html");
+    const downloadPromise = page.waitForEvent('download'); //this so it waits for download to happen, not run test with partial download
+    await page.getByRole('button', {name: 'Download'}).click();
+    await downloadPromise; //wait until promise is resolved
+
+    await writeExcelTest(textSearch, updateValue, {rowChange: 0, colChange:2}, "./tests/files/excellDownloadTest.xlsx");
+    
+    await page.locator("#fileinput").click();
+    await page.locator("#fileinput").setInputFiles("./tests/files/excellDownloadTest.xlsx"); //component type needs to be file (because you upload a file)
+
+    //apply filtering within table to find cell
+    const textLocator = page.getByText(textSearch);
+    const desiredRow = await page.getByRole('row').filter({has: textLocator});
+    
+    await expect (desiredRow.locator("#cell-4-undefined")).toContainText(updateValue);
 
 })
