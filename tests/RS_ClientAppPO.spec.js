@@ -1,5 +1,5 @@
 const {test, expect} = require('@playwright/test');
-// const {LoginPage} = require('../pageObjects/LoginPage');
+// const {LoginPage} = require('../pageObjects/LoginPage'); // error
 const { LoginPage } = require('../pageObjects/loginPage'); //import not working properly for some reason
 
 test('Browser check', async ({page})=>
