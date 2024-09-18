@@ -1,36 +1,21 @@
 const {test, expect} = require('@playwright/test');
-// const {LoginPage} = require('../pageObjects/LoginPage'); // error
-const { LoginPage } = require('../pageObjects/loginPage'); //import not working properly for some reason
+const {POManager} = require('../pageObjects/POManager');
 
 test('Browser check', async ({page})=>
 {
-    const products = page.locator(".card-body");
+    const poManager = new POManager(page);
     const searchForProductName = 'ZARA COAT 3';
     const username = "cf@mailinator.com";
     const password = "Password1";
-
-    const loginPage = new LoginPage(page);
+    
+    const loginPage = poManager.getLoginPage();
     await loginPage.goToPage();
     await loginPage.validLogin(username, password);
 
-
-    await page.locator(".card-body b").first().waitFor(); // products to loadup
-
-    const titles = await page.locator(".card-body b").allTextContents();
-    console.log(titles); 
-    // await page.pause();
-    //hunt for product 'Zara Coat 4' to click on it
-    const countProducts = await products.count();
-    for (let i=0; i < countProducts; ++i)
-    {
-        if(await products.nth(i).locator("b").textContent() === searchForProductName)
-        {
-            //logic to add product to cart, since we've identified the one we search for
-            await products.nth(i).locator("text= Add To Cart").click();  
-            break; //found it, no need to continue loop
-        }
-    }
-    // await page.pause();
+    const dashboardPage = poManager.getDashboardPage();
+    await dashboardPage.searchProductAddCart(searchForProductName);
+    await dashboardPage.navigateToCart();
+    
     //goto cart
     await page.waitForLoadState('networkidle') 
     await page.locator("button[routerlink='/dashboard/cart']").dispatchEvent('click');
@@ -39,10 +24,11 @@ test('Browser check', async ({page})=>
     const bool = await page.locator("h3:has-text('Zara Coat 3')").isVisible(); //check that it exists -- returns boolean value
     expect(bool).toBeTruthy();  //TODO: check evauluation if not fixed at end of course
     await page.locator("li[class='totalRow'] button[type='button']").click(); //checkout button
+    await page.waitForLoadState('networkidle') 
     // await page.pause();
 
     //checkout page
-    await page.locator("[placeholder*='Country']").pressSequentially("ro", {delay:100}); // input field, shows results per input so pressing 1letter at a time
+    await page.locator("[placeholder*='Country']").pressSequentially("ro", {delay:3200}); // input field, shows results per input so pressing 1letter at a time
     const countryDropdown = page.locator(".ta-results");
     await countryDropdown.waitFor(); //wait until is shown
     const countryDropdownCount = await countryDropdown.locator("button").count();
@@ -54,7 +40,6 @@ test('Browser check', async ({page})=>
         }
     }
     // await page.pause();
-
     //asertions for the page
     expect(page.locator(".user__name [type='text']").first()).toHaveText(username);
     await page.locator(".action__submit").click(); // place order button
