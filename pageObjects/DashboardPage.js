@@ -4,6 +4,7 @@ constructor(page){
     this.products = page.locator(".card-body");
     this.productsText = page.locator(".card-body b");
     this.cart = page.locator("button[routerlink='/dashboard/cart']");
+    this.orders = page.locator("button[routerlink*='myorders']");
 
 }
 
@@ -30,6 +31,10 @@ async searchProductAddCart(productName){
 
 async navigateToCart(){
     await  this.cart.dispatchEvent('click');
+}
+async navigateToOrders()
+{
+    await this.orders.click();
 }
 
 }
