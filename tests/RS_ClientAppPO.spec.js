@@ -1,5 +1,7 @@
 const {test, expect} = require('@playwright/test');
 const {POManager} = require('../pageObjects/POManager.js');
+//json->string->jsObject (to avoid fileFormat issues)
+const dataSet = JSON.parse(JSON.stringify(require("../utils/placeorderTestData.json"))); //parse to JS object
 
 test('Browser check', async ({page})=>
 {
