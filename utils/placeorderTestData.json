@@ -1,5 +1,15 @@
-{
+[
+     {
      "username": "cf@mailinator.com",
      "password": "Password1",
      "productName": "ZARA COAT 3"
-}
+     },
+     {
+     "username": "cf@mailinator.com",
+     "password": "Password1",
+     "productName": "Adidas Originals"
+     }
+
+
+
+]
