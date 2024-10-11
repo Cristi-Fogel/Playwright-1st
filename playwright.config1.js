@@ -12,6 +12,7 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 module.exports = defineConfig({
   testDir: './tests',
+  retries: 2,  //retry failure tests
   timeout: 30 * 1000, 
   expect: {timeout: 5000},   
   reporter: 'html',
@@ -29,9 +30,11 @@ module.exports = defineConfig({
         browserName: 'webkit',
         headless: false, 
         screenshot: 'on',
+        video: 'retain-on-failure',  // only failing tests should have vids now
         trace: 'off',
         ...devices['iPhone 11'], //explicit website
-        ignoreHTTPSErrors: true // SSL certification error auto-accept
+        ignoreHTTPSErrors: true, // SSL certification error auto-accept
+        permissions: ['geolocation'],
         
       }
     }, 
