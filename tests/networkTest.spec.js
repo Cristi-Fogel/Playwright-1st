@@ -1,5 +1,5 @@
 const {test, expect, request} = require('@playwright/test');
-const {APiUtils} = require('./utils/APiUtils');
+const {APiUtils} = require('../utils/APiUtils');
 
 const loginPayload = {userEmail:"cf@mailinator.com",userPassword:"Password1"};
 const orderPayload = {orders:[{country:"Romania",productOrderedId:"6581ca399fd99c85e8ee7f45"}]};

@@ -13,6 +13,7 @@ const { defineConfig, devices } = require('@playwright/test');
 module.exports = defineConfig({
   testDir: './tests',
   retries: 2,  //retry failure tests
+  workers: 1,  //paralelism execution (if only one, no simultaneous execuions will run; default is 5)
   timeout: 30 * 1000, 
   expect: {timeout: 5000},   
   reporter: 'html',
