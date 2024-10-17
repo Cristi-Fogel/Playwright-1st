@@ -18,6 +18,7 @@ test.beforeAll(async () => {
 //     //code
 // })
 
+//tagged to run as part of @API tests
 test('@API Place the order', async ({page})=>
     {   
     await page.addInitScript(value => {

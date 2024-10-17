@@ -4,7 +4,7 @@ const { text } = require("stream/consumers");
 // test.describe.configure({mode: 'parallel'}); //with this, the tests will run all at once instead of one after the other
 // test.describe.configure({mode: 'serial'}); //with this, run them one after other; test dependencies (if a test fails, rest will get skipped)
 
-test("Popup validations", async({page})=>
+test("@Web Popup validations", async({page})=>
 {
     await page.goto("https://rahulshettyacademy.com/AutomationPractice")    
     // await page.goBack();

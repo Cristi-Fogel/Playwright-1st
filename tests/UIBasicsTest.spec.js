@@ -1,7 +1,10 @@
 const {test, expect} = require('@playwright/test');
 const { title } = require('process');
 
-test('First test ever', async ({browser})=>
+// @Web --> tagged test 
+// can run with npx playwrigt test --grep @Web
+
+test('@Web First test ever', async ({browser})=>
 {
    const context = await browser.newContext(); 
    const page = await context.newPage();
@@ -53,7 +56,7 @@ test('Browser Check List test', async ({page})=>{
 });
 
 //radiobuttons + dropdowns 
-test("UI Controls test", async ({page})=>
+test("@Web UI Controls test", async ({page})=>
 {
     const userNameInput = page.locator('#username');
     const signInButton = page.locator("#signInBtn");

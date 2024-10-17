@@ -43,7 +43,7 @@ for (const data of dataset){
 
 
 //customizing test behaviour wih fixtures
-customTest(`Client app login`, async ({page, testDataForOrder})=>
+customTest(`@Web Client app login`, async ({page, testDataForOrder})=>
     {
         const poManager = new POManager(page); 
         

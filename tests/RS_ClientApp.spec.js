@@ -1,5 +1,7 @@
 const {test, expect} = require('@playwright/test');
 
+// to mitigate race conditions, tests can be skipped
+// test.skip('test name', bla bla bla)
 test('Browser check', async ({page})=>
 {
     const products = page.locator(".card-body");
