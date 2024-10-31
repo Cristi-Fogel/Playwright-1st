@@ -17,6 +17,19 @@ module.exports = defineConfig({
   timeout: 30 * 1000, 
   expect: {timeout: 5000},   
   reporter: 'html',
+  /*
+  reporter can be also allure:
+  setup: npm install --save-dev @playwright/test allure-playwright
+  cmd line use: npx playwright test --grep @Web --reporter=line,allure-playwright
+  this will create allure-results folder
+  generate: allure generate ./allure-results
+
+  powershell admin:
+  run: Set-ExecutionPolicy RemoteSigned
+  revert with:  Set-ExecutionPolicy Restricted
+
+
+  */
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
