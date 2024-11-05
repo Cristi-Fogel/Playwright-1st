@@ -23,3 +23,19 @@ Usage:
   // @Web --> tagged test 
 // can run with npx playwright test --grep @Web
 
+Run an explicit run session (ex: regression, web, api)
+1. within package.json add the runs you want to have set up;
+2. cmd: npx run webApi
+
+Allure:
+- just a diferent way of reporting shown
+
+Jenkins:
+- need jdk 17 or jdk21
+- in cmd run:
+    1. download jenkins.war
+    2. navigate to where that file is installed
+    3. java -jar jenkins.war --httpPort=9090
+* can use diferent port, check one that is not in use
+
+
