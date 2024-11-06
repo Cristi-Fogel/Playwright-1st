@@ -37,5 +37,13 @@ Jenkins:
     2. navigate to where that file is installed
     3. java -jar jenkins.war --httpPort=9090
 * can use diferent port, check one that is not in use
+ 
+ - in Jenkins:
+  1. new project, can add gitRepo path or from localhost with setting a custom path 
+  2. build steps -> Window(s) batch command OR Execute Shell (macOS) 
+    2.1. input command to be executed: npm run regression
+  3. save -> Build Now
+  4. open up job -> console output for details
+
 
 
