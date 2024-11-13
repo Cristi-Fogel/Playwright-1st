@@ -1,8 +1,8 @@
-Practice part from Rahul Shetty's playwright course.
+Practice part from Rahul Shetty's Playwright course.
 
 Setup:
 - node.js up to date;
-- within package, there is the excelJS library imported for some tests that grab and pass excel data
+- within package, there is the ExcelJS library imported for some tests that grab and pass excel data
   "exceljs": "^4.4.0"
 
 Description:
@@ -44,6 +44,15 @@ Jenkins:
     2.1. input command to be executed: npm run regression
   3. save -> Build Now
   4. open up job -> console output for details
+
+Setup Typescript:
+1. install cmd: npm install -D typescript
+------
+usefull typescript comands-cmd:
+- "tsc demo.ts" --> generates demo.js
+
+2. to run in cmd:
+  node demo1.js
 
 
 
