@@ -16,3 +16,4 @@ data = 1;
 
 // object example
 let user = {name: "Bob", age:"34"}; //can mess around with types that are incompatible. gives errors tho
+// user.location = "home"; //will compile
