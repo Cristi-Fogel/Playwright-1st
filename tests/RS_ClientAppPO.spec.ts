@@ -1,6 +1,12 @@
-const {test, expect} = require('@playwright/test');
-const {customTest} = require('../utils/test-base.js')
-const {POManager} = require('../pageObjects/POManager.js');
+///////////////////////////////////  JS
+// const {test, expect} = require();
+// const {customTest} = require('../utils/test-base.js')
+// const {POManager} = require('../pageObjects/POManager.js');
+///////////////////////////////////  TS
+import {test, expect} from '@playwright/test';
+import { customTest } from '../utils_ts/test-base';
+import {POManager} from '../pageObjects_ts/POManager.js';
+
 //json->string->jsObject (to avoid fileFormat issues)
 const dataset = JSON.parse(JSON.stringify(require("../utils/placeorderTestData.json"))); //parse to JS object
 
@@ -30,14 +36,13 @@ for (const data of dataset){
         //checkout page
         const ordersReviewPage = poManager.getOrdersReviewPage();
         await ordersReviewPage.searchCountryAndSelect("ro","Romania");
-        const orderId = await ordersReviewPage.SubmitAndGetOrderId();
+        let orderId: any; //defined here, so can be used in test
+         orderId = await ordersReviewPage.SubmitAndGetOrderId();
         console.log(orderId);
         await dashboardPage.navigateToOrders();
         const ordersHistoryPage = poManager.getOrdersHistoryPage();
         await ordersHistoryPage.searchOrderAndSelect(orderId);
         expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
-
-
     });
 }
 
