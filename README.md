@@ -47,12 +47,38 @@ Jenkins:
 
 Setup Typescript:
 1. install cmd: npm install -D typescript
-------
+
 usefull typescript comands-cmd:
 - "tsc demo.ts" --> generates demo.js
 
 2. to run in cmd:
   node demo1.js
 
+updates needed:
+- apiUtils and test-base need to be updated to TS file and format;
+- PageObjects files -> init locators and variables used in tests
+
+----
+Cucumber:
+1. install cmd @ project level:
+npm install @cucumber/cucumber
+
+2. cucumber plugin in VSC:
+- File>Settings>Preferences>Extensions: Cucumber Gerkin 
+- restart system
+
+3. setup project
+- create a 'features' folder (cucumber will look for that)
+- write a feature file in project level --> features
+  - test will have .feature extnsion
+    - test will have the given-when-then structure
+    - create step definition file (with used tag -> description)
+    - link steps to actions
+      - skeleton can be defined by cucumber by default when trying to run the feature file for 1st time
+        - can run by cmd: npx cucumber-js
+          - this will execute node_modules->.bin-> cucumber-js 
+          - will show in terminal what/how is missing
+- inside the features folder, create 'step_definitions' folder
+  - inside it, write 'steps.js' this will be where you write all steps
 
 
