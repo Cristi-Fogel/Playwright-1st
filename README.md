@@ -79,6 +79,12 @@ npm install @cucumber/cucumber
           - this will execute node_modules->.bin-> cucumber-js 
           - will show in terminal what/how is missing
 - inside the features folder, create 'step_definitions' folder
-  - inside it, write 'steps.js' this will be where you write all steps
+  - inside it, write 'steps.js' this will be where you partition existing test(s) and write all steps
+  - can add code within the coresponding brackets -- marked with write code here 
+    - if you have await in your code-block, make the function async
+    - eliminate the return line;
+- WORLD constructor:
+  - 
 
+  
 
