@@ -84,7 +84,11 @@ npm install @cucumber/cucumber
     - if you have await in your code-block, make the function async
     - eliminate the return line;
 - WORLD constructor:
-  - 
+  - use of this. to access classes across when/then blocks;
+  - add timeout if a block might take more than 5seconds to loadup
 
-  
+- npx cucumber-js --exit to run (will run in headless mode) 
+  - with the exit argument will come out of terminal
 
+- can add cucumber.js file
+  - add instructuions to it, on how to behave when running tests;

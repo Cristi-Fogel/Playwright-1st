@@ -1,0 +1,1 @@
+module.exports = {default: '--publish-quiet'}   // no BS log lines to publish report link (to share with team)
