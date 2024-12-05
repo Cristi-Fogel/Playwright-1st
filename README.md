@@ -92,3 +92,8 @@ npm install @cucumber/cucumber
 
 - can add cucumber.js file
   - add instructuions to it, on how to behave when running tests;
+
+- create the support folder for HOOKS
+  - with before: create the setup part
+  - with after: close and cleanup environment, cookies
+  - can use BeforeStep/AfterStep to take a screenshot (if step fails);
