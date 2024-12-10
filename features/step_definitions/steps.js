@@ -2,7 +2,8 @@ const {When, Then, Given} = require('@cucumber/cucumber');
 // const {POManager} = require("../../pageObjects/POManager");
 const {expect} = require('playwright/test');
 // const playwright =  require('playwright/test');
-
+    
+// ECOMMERCE.feature
     Given('a login to Ecommerce application with {string} and {string}',{timeout: 100*10000}, async function (username, password) {
     // Write code here that turns the phrase above into concrete actions
     const products = this.page.locator(".card-body");
@@ -45,3 +46,28 @@ const {expect} = require('playwright/test');
     await ordersHistoryPage.searchOrderAndSelect(orderId);
     expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
     });
+
+// ERROR VALIDATIONS FEATURE
+    Given('a login to Ecommerce2 application with {string} and {string}', async function (string, string2) {
+        const userNameInput = page.locator('#username');
+        const signInButton = page.locator("#signInBtn");
+
+        await this.page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+        console.log(await page.title());
+
+        await userNameInput.fill("rahulshe");
+        await this.page.locator("[type='password']").fill("learning");
+        await signInButton.click();
+    });
+    Then('Verify Error Message is displayed', async function () {       
+        console.log(await this.page.locator("[style*='block']").textContent()); // grab text
+        await expect(this.page.locator("[style*='block']")).toContainText('Incorrect'); 
+    });
+
+
+    
+          
+    
+
+       
+       

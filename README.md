@@ -97,3 +97,8 @@ npm install @cucumber/cucumber
   - with before: create the setup part
   - with after: close and cleanup environment, cookies
   - can use BeforeStep/AfterStep to take a screenshot (if step fails);
+
+
+- running an explicit cucumber features-test set:
+npx cucumber-js features/ErrorValidations.feature --exit
+    - can use this to create syntax after it WILL fail 1st time
