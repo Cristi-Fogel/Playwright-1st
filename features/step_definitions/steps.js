@@ -48,15 +48,15 @@ const {expect} = require('playwright/test');
     });
 
 // ERROR VALIDATIONS FEATURE
-    Given('a login to Ecommerce2 application with {string} and {string}', async function (string, string2) {
-        const userNameInput = page.locator('#username');
-        const signInButton = page.locator("#signInBtn");
+    Given('a login to Ecommerce2 application with {string} and {string}', async function (username, password) {
+        const userNameInput = this.page.locator('#username');
+        const signInButton = this.page.locator("#signInBtn");
 
         await this.page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-        console.log(await page.title());
+        console.log(await this.page.title());
 
-        await userNameInput.fill("rahulshe");
-        await this.page.locator("[type='password']").fill("learning");
+        await userNameInput.fill(username);
+        await this.page.locator("[type='password']").fill(password);
         await signInButton.click();
     });
     Then('Verify Error Message is displayed', async function () {       
