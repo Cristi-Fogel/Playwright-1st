@@ -13,9 +13,10 @@ Before(async function() {
     this.poManager = new POManager(this.page); // this. will make sure it's accessible outside this block (avoid null-pointer exception)
 });
 
-BeforeStep(function(){
-
+BeforeStep({tags: "@foo"}, function(){
+    //i am skipped
 });
+
 AfterStep(async function({result}){
     if(result.status === Status.FAILED){
         await this.page.screenshot({path: 'screenshot1.png'});

@@ -1,5 +1,5 @@
 Feature: Ecommerce validations
-
+    @Regression
     Scenario: Placing the Order
         Given a login to Ecommerce application with "cf@mailinator.com" and "Password1"
         When Add "zara coat 3" to Cart
