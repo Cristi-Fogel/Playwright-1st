@@ -99,25 +99,25 @@ npm install @cucumber/cucumber
   - can use BeforeStep/AfterStep to take a screenshot (if step fails);
 
 
-- running an explicit cucumber features-test set:
+4. running an explicit cucumber features-test set:
   cmd: npx cucumber-js features/ErrorValidations.feature --exit
     - can use this to create syntax after it WILL fail 1st time
 
-- use of tags:
+5. use of tags:
    tags: @Regression / @Validation  (with more than one tag, set one under the other)
    cmd: npx cucumber-js --tags "@Regression" --exit
 
-- tagged hooks:
+5.1. tagged hooks:
   - tags can be used in hooks, so that they will run ONLY into certain test groups (ex: in hooks use regession tags to run regression setup)
   - can also set OR clauses
   Before({tags: "@foo or @bar"}, function(){ ////});
 
 
-- PARAMETRIZATION:
+6. PARAMETRIZATION:
   @feature, instead of Scenario --> Scenario Outline
    <!-- Given a login to Ecommerce2 application with "<username>" and "<password>" -->
    to encapsulate in brackets <> the code will pick up examples/parameters
      Examples:
-        | username          | password      |
-        | cf@mailinator.com | Password1     |
+      | username          | password      |
+      | cf@mailinator.com | Password1     |
        
