@@ -112,3 +112,12 @@ npm install @cucumber/cucumber
   - can also set OR clauses
   Before({tags: "@foo or @bar"}, function(){ ////});
 
+
+- PARAMETRIZATION:
+  @feature, instead of Scenario --> Scenario Outline
+   <!-- Given a login to Ecommerce2 application with "<username>" and "<password>" -->
+   to encapsulate in brackets <> the code will pick up examples/parameters
+     Examples:
+        | username          | password      |
+        | cf@mailinator.com | Password1     |
+       
