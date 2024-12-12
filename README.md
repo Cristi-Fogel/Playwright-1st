@@ -14,10 +14,10 @@ state.json - storing cookies from API within tests to be picked up and used (ski
 
 Usage:
 - config file for normal run;
-    ex: npx playwright test
+    ex cmd: npx playwright test
 
 - config1 file for custom runs;
-  ex: npx playwright test tests/RS_ClientAppPO.spec --config playwright.config1.js --project=safari   
+  ex cmd: npx playwright test tests/RS_ClientAppPO.spec --config playwright.config1.js --project=safari   
 
 - tagging tests, to run just web/api tests
   // @Web --> tagged test 
@@ -35,7 +35,7 @@ Jenkins:
 - in cmd run:
     1. download jenkins.war
     2. navigate to where that file is installed
-    3. java -jar jenkins.war --httpPort=9090
+    3. cmd: java -jar jenkins.war --httpPort=9090
 * can use diferent port, check one that is not in use
  
  - in Jenkins:
@@ -46,13 +46,15 @@ Jenkins:
   4. open up job -> console output for details
 
 Setup Typescript:
-1. install cmd: npm install -D typescript
+1. install 
+cmd: npm install -D typescript
 
 usefull typescript comands-cmd:
-- "tsc demo.ts" --> generates demo.js
+- cmd: tsc demo.ts
+ --> generates demo.js
 
 2. to run in cmd:
-  node demo1.js
+cmd:  node demo1.js
 
 updates needed:
 - apiUtils and test-base need to be updated to TS file and format;
@@ -61,7 +63,7 @@ updates needed:
 ----
 Cucumber:
 1. install cmd @ project level:
-npm install @cucumber/cucumber
+cmd: npm install @cucumber/cucumber
 
 2. cucumber plugin in VSC:
 - File>Settings>Preferences>Extensions: Cucumber Gerkin 
@@ -98,7 +100,6 @@ npm install @cucumber/cucumber
   - with after: close and cleanup environment, cookies
   - can use BeforeStep/AfterStep to take a screenshot (if step fails);
 
-
 4. running an explicit cucumber features-test set:
   cmd: npx cucumber-js features/ErrorValidations.feature --exit
     - can use this to create syntax after it WILL fail 1st time
@@ -121,3 +122,16 @@ npm install @cucumber/cucumber
       | username          | password      |
       | cf@mailinator.com | Password1     |
        
+7. Paralel execution:
+  - test-scenarios can be run paralelly (but within a .feature-file); they cannot run 2x .feature-files at the same time
+  cmd: npx cucumber-js features/Ecommerce.feature --parallel 2 --exit
+
+8. Reports:
+  cmd: npx cucumber-js features/Ecummerce.feature --exit --format html: cucumber-report.html
+
+  - reports can be done in json, html, text format based on extension you pass
+  - flaky tests can get rerun-retry with parameter:
+  cmd: --retry 1  
+    - can be done in either cmd or the cucumber.js file
+    - can add the cmd within the package.json within the script-line area
+      - cmd: npm run cucumberRegression
