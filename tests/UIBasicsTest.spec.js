@@ -25,22 +25,23 @@ test('Browser Input Error Message test', async ({page})=>
    await userNameInput.fill("rahulshe");
    await page.locator("[type='password']").fill("learning");
    await signInButton.click();
-        //no explicit wait needed like selenium (takes one from config 30s) 
+    //no explicit wait needed like selenium (takes one from config 30s) 
     console.log(await page.locator("[style*='block']").textContent()); // grab text
-    await expect(page.locator("[style*='block']")).toContainText('Incorrect'); //no need to have all text, just one word in this case
+     //no need to have all text, just one word in this case
+    await expect(page.locator("[style*='block']")).toContainText('Incorrect');
     await userNameInput.fill("");
     await userNameInput.fill("rahulshettyacademy");
     await signInButton.click();
     // wait until all page content is loaded
     await page.waitForLoadState('networkidle');
-        //array of 4 products
+    //array of 4 products
     console.log(await productCardTitles.nth(0).textContent());
     console.log(await productCardTitles.nth(3).textContent());
     console.log(await productCardTitles.first().textContent());   
     console.log(await productCardTitles.last().textContent());   
-    const allTitles = await productCardTitles.allTextContents();  //will return an array, can be blank --- so might want an additional check in place
-    console.log(allTitles);
-       
+    //will return an array, can be blank --- so might want an additional check in place
+    const allTitles = await productCardTitles.allTextContents();  
+    console.log(allTitles);     
 });
 
 test('Browser Check List test', async ({page})=>{
@@ -51,7 +52,8 @@ test('Browser Check List test', async ({page})=>{
     //await page.waitForLoadState('networkidle');
        // //if networkidle fails, 
     
-    const titles = await page.locator(".card-body b").allTextContents(); //if this cails, can add first as well
+    //if this cails, can add first as well   
+    const titles = await page.locator(".card-body b").allTextContents(); 
     console.log(titles);
 });
 
@@ -65,7 +67,7 @@ test("@Web UI Controls test", async ({page})=>
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     await userNameInput.fill("rahulshettyacademy");
     await page.locator("[type='password']").fill("learning");
-        //fixed, static dropdown
+    //fixed, static dropdown
     const dropdown = page.locator("select.form-control"); //define dropdown
     await dropdown.selectOption("consult"); //select desired option
     

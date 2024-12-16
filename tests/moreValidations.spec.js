@@ -45,6 +45,6 @@ test("Screenshot and UI validation", async({page})=>
 test('visual comparission', async({page})=>
 {
     await page.goto("https://www.google.com");
-    expect(await page.screenshot()).toMatchSnapshot('screnshots/landing.png');  //1st run will fail, BUT it creates a screenshot so you have for future runs!
-
+    //1st run will fail, BUT it creates a screenshot so you have for future runs!
+    expect(await page.screenshot()).toMatchSnapshot('screnshots/landing.png');  
 });

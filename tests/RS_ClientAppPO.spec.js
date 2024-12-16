@@ -36,11 +36,8 @@ for (const data of dataset){
         const ordersHistoryPage = poManager.getOrdersHistoryPage();
         await ordersHistoryPage.searchOrderAndSelect(orderId);
         expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
-
-
     });
 }
-
 
 //customizing test behaviour wih fixtures
 customTest(`@Web Client app login`, async ({page, testDataForOrder})=>

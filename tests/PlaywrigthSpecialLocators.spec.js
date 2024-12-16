@@ -13,5 +13,4 @@ test('Playwright locators check', async ({page})=>
 
     await page.getByRole("link", {name: "Shop"}).click();
     await page.locator("app-card").filter({hasText: 'Nokia Edge'}).getByRole("button").click(); //only one button in card, so no filtering needed here
- 
 })

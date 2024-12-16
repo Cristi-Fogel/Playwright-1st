@@ -3,9 +3,9 @@
 // const {customTest} = require('../utils/test-base.js')
 // const {POManager} = require('../pageObjects/POManager.js');
 ///////////////////////////////////  TS
-import {test, expect} from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { customTest } from '../utils_ts/test-base';
-import {POManager} from '../pageObjects_ts/POManager.js';
+import { POManager } from '../pageObjects_ts/POManager.js';
 
 //json->string->jsObject (to avoid fileFormat issues)
 const dataset = JSON.parse(JSON.stringify(require("../utils/placeorderTestData.json"))); //parse to JS object
@@ -37,7 +37,7 @@ for (const data of dataset){
         const ordersReviewPage = poManager.getOrdersReviewPage();
         await ordersReviewPage.searchCountryAndSelect("ro","Romania");
         let orderId: any; //defined here, so can be used in test
-         orderId = await ordersReviewPage.SubmitAndGetOrderId();
+        orderId = await ordersReviewPage.SubmitAndGetOrderId();
         console.log(orderId);
         await dashboardPage.navigateToOrders();
         const ordersHistoryPage = poManager.getOrdersHistoryPage();

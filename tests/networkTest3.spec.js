@@ -6,8 +6,7 @@ test('Blocking of network requests (.css / images)', async ({browser})=>
    const context = await browser.newContext(); 
    const page = await context.newPage();
    const userNameInput = page.locator('#username');
-    const signInButton = page.locator("#signInBtn");
-   
+   const signInButton = page.locator("#signInBtn");
 //    page.route('**/*.css{jpg,png,jpeg}', route=> route.abort()); //anything with .css will not be loaded
    page.route('**/*.{jpg,png,jpeg}', route=> route.abort()); //anything with .css will not be loaded
    
@@ -21,10 +20,10 @@ test('Blocking of network requests (.css / images)', async ({browser})=>
 
 test('Show all network requests made', async ({browser})=>
     { 
-       const context = await browser.newContext(); 
-       const page = await context.newPage();
-       const userNameInput = page.locator('#username');
-       const signInButton = page.locator("#signInBtn");
+        const context = await browser.newContext(); 
+        const page = await context.newPage();
+        const userNameInput = page.locator('#username');
+        const signInButton = page.locator("#signInBtn");
        
         page.on('request', request=> console.log(request.url()));
         page.on('response', response=> console.log(response.url(), response.status()))

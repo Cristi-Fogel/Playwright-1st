@@ -42,8 +42,4 @@ test('@API Place the order', async ({page})=>
     await page.locator("button[routerlink='/dashboard/myorders']").dispatchEvent('click');
     await page.waitForResponse("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/*");
     console.log(await page.locator(".mt-4").textContent());
-    
-    
-    
-   
 }) 
