@@ -36,7 +36,20 @@ do {
 }while(i<10);
 console.log(i);
 
+// many times execution until condition met
 for(let k=0; k<=10; k++){
     console.log("for loop: " + k)
 }
 
+// execution while condition is met, after changes -bye bye
+let required = true;
+while(required){
+    console.log("while loop: " + required);
+    required= false;
+}
+
+// from 1->10 give common multiple values of 2 and 5
+for(let k=0; k<=10; k++){
+    if(k%2 == 0)
+    console.log("for loop - multiple 2, 5: " + k)
+}
