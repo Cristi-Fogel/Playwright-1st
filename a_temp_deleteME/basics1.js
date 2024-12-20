@@ -85,12 +85,39 @@ console.log(marks[3]);
 
 console.log("array length: " + marks.length);
 
+var sum = 0;
+for(let i=0; i<marks.length; i++){
+    console.log("array element: " + marks[i]);
+    sum = sum + marks[i];
+    console.log("sum of elements is: " + sum);
+}
+console.log("sum of all array elements is: " + sum);
+
 marks.push(65);//append
 console.log(marks);
 marks.pop();
 console.log(marks);
-marks.unshift(1); // 1st position
+marks.unshift(1); // add element on 1st position
 
 console.log("number on posistion: " + marks.indexOf(38));
 console.log("120 part of array? " + marks.includes(120));
+
+//reduce filter map (works on sum or multiplication)
+// takes 2 arguments, puls each value from 1st and puts it into the second
+let total = marks.reduce((sum, mark) => sum+mark, 0);
+console.log("total from reduce is " + total);
+
+
+var scores = [12, 13, 14, 16];
+var evenScores = [];
+for(let i=0; i<scores.length; i++){
+    if(scores[i]%2 == 0){
+        evenScores.push(scores[i])
+    }
+}
+console.log("even numbers in array are: " + evenScores);
+
+let newFilterEvenScores = scores.filter(score=>score%2==0);
+console.log("new filter even score: " + newFilterEvenScores);
+
 
