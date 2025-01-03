@@ -120,4 +120,29 @@ console.log("even numbers in array are: " + evenScores);
 let newFilterEvenScores = scores.filter(score=>score%2==0);
 console.log("new filter even score: " + newFilterEvenScores);
 
+// map array function (modify values in array to new ones)
+// example, use filtered values and multiply them by 3
+let mappedArray = newFilterEvenScores.map(score=>score*3);
+console.log("mapped array values: " + mappedArray);
 
+summOfMappedArray = mappedArray.reduce((sum,val)=> sum+ val,0);
+console.log("summOfMappedArray " + summOfMappedArray);
+
+/// -----------------------------------------------------
+// chain of operations example
+var scores1 = [12,13,14,16];
+let sumValues1 = scores1.filter(score=>score%2==0).map(score=>score*3).reduce((sum, val)=> sum+val, 0);
+console.log("sumValues1: " + sumValues1);
+
+//sorting   .sort() method limited to strings
+let fruits = ["banana", "mango", "pomegranite", "apple"];
+ 
+console.log(fruits.sort());     //asc
+console.log(fruits.reverse());  //desc
+
+// number sorting
+var scrores2 = [12, 0.3,19,20,3]
+console.log(scrores2.sort());
+//need to apply bubble sort in recursive manner to sort them properly
+console.log(scrores2.sort((a,b)=> a-b)); //asc
+console.log(scrores2.sort((a,b)=> b-a)); //desc
