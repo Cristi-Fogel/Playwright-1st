@@ -1,5 +1,5 @@
 // const {LoginPage} = require('./LoginPage'); // error
-const { LoginPage } = require('./loginPage'); //import not working properly for some reason( works with TS not JS)
+// const { LoginPage } = require('./loginPage'); //import not working properly for some reason( works with TS not JS)
 const { DashboardPage } = require('./DashboardPage');
 const { CartPage } = require('./CartPage');
 const { OrdersReviewPage } = require('./OrdersReviewPage');

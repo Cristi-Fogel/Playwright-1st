@@ -66,7 +66,6 @@ for(let k=0; k<=100; k++){
         if (n==3);
         break;
     }
-    
 }
 
 console.log("########################################################")
@@ -146,3 +145,21 @@ console.log(scrores2.sort());
 //need to apply bubble sort in recursive manner to sort them properly
 console.log(scrores2.sort((a,b)=> a-b)); //asc
 console.log(scrores2.sort((a,b)=> b-a)); //desc
+
+
+// creation of functions
+function addNumbers(a,b){
+    return a+b
+};
+let functionSum = addNumbers(3,5);
+console.log("functionSum: " + functionSum);
+
+// anonymus functions 
+let sumOfIntegers = function(c,d){
+    return c+d
+}
+
+// anonymus functions simplification
+let sumOfNr = (c,d)=> c+d;
+console.log("sum of nr: " + sumOfNr(3,4));
+
