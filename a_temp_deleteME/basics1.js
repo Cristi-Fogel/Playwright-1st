@@ -213,3 +213,37 @@ while (indexValue!== -1){
    
 }
 console.log("count of 'value' ocurrences is: " + indexCount);
+
+
+// objects (collection of properties)
+let person = {
+    firstName: 'firstName',
+    lastName:  'lastName',
+    age:       24,
+    fullName:  function(){
+                        console.log(this.firstName + this.lastName + "concatenated")
+                        }
+}
+console.log(person.lastName);
+console.log(person['lastName']);  //equivalent to accessing it
+
+person.firstName = "new firstName";
+console.log(person.firstName);
+
+//add a property to the object
+person.gender= 'male';
+console.log( person);
+
+//remove a property from an object
+delete person.gender;
+console.log(person);
+
+//check if property exists
+console.log('gender' in person);
+
+//prints all values from JS object
+for(let key in person){
+    console.log(person[key]);
+}
+//to print the function within, add brackets
+console.log(person.fullName());
