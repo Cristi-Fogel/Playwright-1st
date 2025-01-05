@@ -179,3 +179,37 @@ function greet1(){
     console.log(constantValue);
 }
 greet1();
+
+
+//// string examples
+let day = 'tuesday ';
+console.log("string length is " + day.length);
+let subString = day.slice(0,2);
+console.log("cine? " + subString);
+console.log(day[1]); //this will show the array value within the string
+let splitDay = day.split("s");
+console.log(splitDay[1].trim()); 
+
+let date = '23';
+let nextDate = '27';
+//convert to integers from strings, to do the operations
+dayDifference = parseInt(nextDate) - parseInt(date);
+console.log("dayDifference " + dayDifference);
+//convert back to string (if needed duh...)
+dayDifference.toString();
+
+//string concatenation
+let newQuote = day + "is Funday";
+console.log(newQuote);
+
+//array indexes
+let indexCount = 0
+let indexValue = newQuote.indexOf("day", 5); // 5 is optional, used since we have 2x occurences - tuesDAY and funDAY
+console.log(indexValue);
+
+while (indexValue!== -1){
+    indexCount++
+    indexValue = newQuote.indexOf("day", indexValue+1);
+   
+}
+console.log("count of 'value' ocurrences is: " + indexCount);
