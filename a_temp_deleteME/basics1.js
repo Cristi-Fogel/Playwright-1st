@@ -1,3 +1,5 @@
+const ExternalPerson = require ('./PersonClassExample')
+
 console.log("hey hey");
 
 var a = 4;
@@ -221,7 +223,7 @@ let person = {
     lastName:  'lastName',
     age:       24,
     fullName:  function(){
-                        console.log(this.firstName + this.lastName + "concatenated")
+                        return(this.firstName + this.lastName + " concatenated")
                         }
 }
 console.log(person.lastName);
@@ -247,3 +249,7 @@ for(let key in person){
 }
 //to print the function within, add brackets
 console.log(person.fullName());
+
+//imported class example
+let externalPerson = new ExternalPerson("Chucky", "Cheese");
+console.log(externalPerson);
