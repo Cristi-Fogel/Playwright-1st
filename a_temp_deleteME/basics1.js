@@ -163,3 +163,19 @@ let sumOfIntegers = function(c,d){
 let sumOfNr = (c,d)=> c+d;
 console.log("sum of nr: " + sumOfNr(3,4));
 
+// function scope
+var greet = "Global Level"; // global value 
+let greeting = "block level no matter what"  // global value, but block value is prio
+const constantValue = "you can't change me" //var + let can be reinitialized; but const will remain the same
+
+function greet1(){
+    var greet = "Block level"; 
+    var greeting = "block level because i said so";
+    let niu = "not visible outside this block";
+
+    console.log(greet);
+    console.log(greeting);
+    console.log(niu);
+    console.log(constantValue);
+}
+greet1();
